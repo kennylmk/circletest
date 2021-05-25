@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  common:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run: echo "Common commit"
+  ProjectA:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run: echo "projectA commit"
+  projectB:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run: echo "projectB commit"
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - common:
+          filters:
+            branches:
+              only: 
+                - master
+      - projectA:
+          filters:
+            branches:
+              only: 
+                - projectA
+      - projectB:
+          filters:
+            branches:
+              only: 
+                - projectB
