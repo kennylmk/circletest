@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: echo "Common commit"
-  ProjectA:
+  projectA:
     docker:
       - image: circleci/node:12
     steps:
