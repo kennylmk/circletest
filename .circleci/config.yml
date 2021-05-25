@@ -1,0 +1,16 @@
+workflows:
+  version: 2.1
+  build_and_test:
+    jobs:
+      - common:
+          filters:
+            branches:
+              - master
+      - projectA:
+          filters:
+            branches:
+              - projectA
+      - projectB:
+          filters:
+            branches:
+              - projectB
